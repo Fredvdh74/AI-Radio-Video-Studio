@@ -164,8 +164,14 @@ if st.button("Lock studio"):
     st.session_state.authenticated = False
     st.rerun()
 st.info("Files are temporary on the cloud server. Download completed videos immediately. Long 1080p renders may exceed free hosting limits.")
-audio_upload = st.file_uploader("1. Upload SUNO song (MP3 or WAV)", type=["mp3", "wav", "m4a"])
+
+audio_upload = st.file_uploader(
+    "1. Upload SUNO song (MP3, WAV or M4A)",
+    type=["mp3", "wav", "m4a"],
+    key="suno_audio_mobile_v2",
+)
 lyrics = st.text_area("2. Paste lyrics or describe the message (optional)", height=180, placeholder="Heal and restore our land...")
+
 resolution = st.selectbox("3. Video quality", ["720p", "1080p"], index=0)
 mode = st.radio("4. Visual source", ["Use my footage (no AI charges)", "Generate original AI scene artwork (paid API)"])
 footage_uploads = []
